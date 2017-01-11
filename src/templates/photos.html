@@ -1,0 +1,19 @@
+<div ui-content-for="title">
+  <span>Album #{{albumId}}</span>
+</div>
+<div class="section">
+	<a href="#!/gallery/" class="btn btn-info btn-sm"><i class="fa fa-arrow-left"></i> Back</a>
+</div>
+<div class="scrollable">
+  	<div class="scrollable-content section" nextPage('photos')>
+		<div class="row" ng-repeat="i in photoRowArray track by $index">
+		  <div ng-repeat="photo in photos | limitTo: 6: $index*2" class="col-sm-2 col-md-2">
+		    <div class="thumbnail text-center">
+		      <a href="javascript:void(0);">
+			      <img src="{{photo.thumbnailUrl}}" alt="{{photo.title}}">
+			  </a>
+		    </div>
+		  </div>
+		</div>
+	</div>
+</div>

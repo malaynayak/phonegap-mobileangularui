@@ -1,0 +1,62 @@
+<div ui-content-for="title">
+  <span>Post #{{postId}}</span>
+</div>
+<div class="scrollable">
+  <div class="scrollable-content section">
+	<div class="btn-group">
+		<a href="#!/posts/" class="btn btn-info btn-sm"><i class="fa fa-arrow-left"></i> Back</a>
+	</div>
+	<hr>
+  	<div class="text-center">
+		<h4>{{post.title}}</h4>
+		<span>By: </span><a href="" ui-turn-on="modal1">{{author.name}}</a>
+		<hr>
+  	</div>
+  	<div> 
+		<p>{{post.body}}</p>
+	</div>
+	<hr>
+	<h4>Comments</h4>
+	<hr>
+	<div class="panel-group" ui-state="myAccordion" ui-default="1">
+	  <div class="panel panel-default" ng-repeat="comment in comments">
+	    <div class="panel-heading" ui-set="{'myAccordion': comment.id}">        
+	      <h4 class="panel-title">
+	          {{comment.name}}
+	      </h4>
+	    </div>
+	    <div ui-if="myAccordion == {{comment.id}}">
+	      <div class="panel-body">
+	        {{comment.body}}
+	      </div>
+	    </div>
+	    <div class="panel-footer">
+	        {{comment.email}}
+	      </div>
+	  </div>
+	</div>
+  </div>
+</div>
+<div ui-content-for="modals">
+  <div class="modal" ui-state='modal1' ui-if="modal1" >
+    <div class="modal-backdrop in"></div>
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button class="close"
+                  ui-turn-off="modal1">&times;</button>
+          <h4 class="modal-title">{{author.name}}</h4>
+        </div>
+        <div class="modal-body">
+          <p>Name :  {{author.name}}</p>
+          <p>Email : {{author.email}}</p>
+          <p>Phone : {{author.phone}}</p>
+          <p>Company: {{author.company.name}}</p>
+        </div>
+        <div class="modal-footer">
+          <button ui-turn-off="modal1" class="btn btn-default">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
