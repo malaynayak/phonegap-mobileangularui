@@ -9,7 +9,7 @@ windows in your system.
 
 This app has been tested in **android** platform.
 
-#Steps to run
+#Steps to Run
 1. Clone the repository to your local system.
 2. Open command prompt and go to the repository folder.
 3. Install the dependencies by running follwing commands
@@ -17,6 +17,12 @@ This app has been tested in **android** platform.
    * **bower install** (adds dependent bower packages)
 4. Build the application by executing : **gulp build**
 5. Now run the application by executing: **phonegap run android** # ios, or whatever is the platform name.
+
+#Login Details
+Username: johndoe
+
+Password: 123456
+
 
 **Follow this** [link](http://mobileangularui.com/blog/using-the-generator/) **to get detailed 
 idea about the the project structure and the build process** used in this app.
