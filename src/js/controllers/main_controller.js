@@ -1,6 +1,15 @@
-angular.module('MyApp.controllers.Main', [])
+angular.module('MyApp.controllers.Main', [
+	'MyApp.services.Auth'
+])
 
-.controller('MainController', ["$rootScope", "$scope",function($rootScope, $scope){
+.controller('MainController', ["$rootScope", "$scope", "AuthService", "$location", 
+	function($rootScope, $scope, AuthService, $location){
+
+	$rootScope.loggedIn = false;
+	if(AuthService.isLoggedIn()) {
+		$rootScope.loggedIn = true;
+	}
+
   	$scope.swiped = function(direction) {
     	alert('Swiped ' + direction);
 	};
@@ -8,10 +17,13 @@ angular.module('MyApp.controllers.Main', [])
 	// User agent displayed in home page
 	$scope.userAgent = navigator.userAgent;
 
-	// Needed for the loading screen
-	$rootScope.$on('$routeChangeStart', function() {
+	// Needed for the loading screen and authorisation
+	$rootScope.$on('$routeChangeStart', function(event, next, current) {
 		$rootScope.loading = true;
-
+		if (next.requireAuth !== undefined && next.requireAuth !== null && 
+			next.requireAuth && !AuthService.isLoggedIn()) {
+        	$location.path("/login");
+        }
 	});
 
 	$rootScope.$on('$routeChangeSuccess', function() {
