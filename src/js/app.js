@@ -5,8 +5,7 @@ angular.module('MyApp', [
   'MyApp.controllers.Main',
   'MyApp.controllers.Posts',
   'MyApp.controllers.Gallery',
-  'MyApp.controllers.Plugin',
-  'MyApp.controllers.Login',
+  'MyApp.controllers.Plugin'
 ])
 
 .run(function($transform) {
@@ -48,17 +47,6 @@ angular.module('MyApp', [
         templateUrl : "location.html",
         controller : "locationController",
         reloadOnSearch: false
-    })
-    .when("/login", {
-        templateUrl : "login.html",
-        controller : "loginController",
-        reloadOnSearch: false
-    })
-    .when("/profile", {
-        templateUrl : "profile.html",
-        controller : "loginController",
-        reloadOnSearch: false,
-        requireAuth: true
     })
     .otherwise("/", {
         redirectTo  : "/"
